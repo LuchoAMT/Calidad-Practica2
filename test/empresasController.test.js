@@ -285,5 +285,39 @@ describe('Funcion actualizarEmpresa', () => {
 });
 
 describe('Funcion eliminarEmpresa', () => {
+  let req;
+  let res;
+
+  beforeEach(() => {
+    req = { params: {}, usuarioId: 1 };
+    res = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis()
+    };
+
+    jest.clearAllMocks();
+  });
+
+  it('Empresa eliminada con éxito', async () => {
+    req.params.id = 1;
+
+    db.query.mockResolvedValueOnce([{ affectedRows: 1 }]);
+
+    await empresasController.eliminarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({ mensaje: 'Empresa eliminada con éxito' });
+  });
+
+  it('Error al eliminar la empresa', async () => {
+    req.params.id = 1;
+
+    const error = new Error('DB error');
+    db.query.mockRejectedValueOnce(error);
+
+    await empresasController.eliminarEmpresa(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'DB error' });
+  });
  
 });

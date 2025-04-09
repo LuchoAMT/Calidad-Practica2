@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744172438361" clover="3.2.0">
-  <project timestamp="1744172438362" name="All files">
-    <metrics statements="310" coveredstatements="109" conditionals="98" coveredconditionals="30" methods="26" coveredmethods="9" elements="434" coveredelements="148" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
+<coverage generated="1744172828512" clover="3.2.0">
+  <project timestamp="1744172828512" name="All files">
+    <metrics statements="310" coveredstatements="115" conditionals="98" coveredconditionals="30" methods="26" coveredmethods="10" elements="434" coveredelements="155" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
     <file name="authController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\authController.js">
       <metrics statements="23" coveredstatements="23" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
@@ -62,7 +62,7 @@
       <line num="75" count="0" type="stmt"/>
     </file>
     <file name="empresasController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\empresasController.js">
-      <metrics statements="95" coveredstatements="41" conditionals="42" coveredconditionals="12" methods="6" coveredmethods="4"/>
+      <metrics statements="95" coveredstatements="47" conditionals="42" coveredconditionals="12" methods="6" coveredmethods="5"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
@@ -152,12 +152,12 @@
       <line num="156" count="0" type="stmt"/>
       <line num="157" count="0" type="stmt"/>
       <line num="163" count="1" type="stmt"/>
-      <line num="164" count="0" type="stmt"/>
-      <line num="166" count="0" type="stmt"/>
-      <line num="168" count="0" type="stmt"/>
-      <line num="169" count="0" type="stmt"/>
-      <line num="170" count="0" type="stmt"/>
-      <line num="172" count="0" type="stmt"/>
+      <line num="164" count="2" type="stmt"/>
+      <line num="166" count="2" type="stmt"/>
+      <line num="168" count="2" type="stmt"/>
+      <line num="169" count="2" type="stmt"/>
+      <line num="170" count="1" type="stmt"/>
+      <line num="172" count="1" type="stmt"/>
     </file>
     <file name="negociosController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\negociosController.js">
       <metrics statements="83" coveredstatements="7" conditionals="30" coveredconditionals="0" methods="5" coveredmethods="0"/>
