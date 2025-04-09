@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.39% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/23</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.39% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/23</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,40 +111,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const bcrypt = require('bcrypt');
@@ -152,41 +152,41 @@ const jwt = require('jsonwebtoken');
 const db = require('../db');  // Conexión a la base de datos
 &nbsp;
 // Lógica para iniciar sesión
-exports.iniciarSesion = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { email, password, userType } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+exports.iniciarSesion = async (req, res) =&gt; {
+    const { email, password, userType } = req.body;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (userType !== 'negocio' &amp;&amp; userType !== 'empresa') {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(400).json({ mensaje: 'Tipo de usuario no válido' });</span>
+    if (userType !== 'negocio' &amp;&amp; userType !== 'empresa') {
+        return res.status(400).json({ mensaje: 'Tipo de usuario no válido' });
     }
 &nbsp;
-    const queryTable = <span class="cstat-no" title="statement not covered" >userType === 'negocio' ? 'negocios' : 'empresas';</span>
-    const idColumn = <span class="cstat-no" title="statement not covered" >userType === 'negocio' ? 'id_negocio' : 'id_empresa';</span>
+    const queryTable = userType === 'negocio' ? 'negocios' : 'empresas';
+    const idColumn = userType === 'negocio' ? 'id_negocio' : 'id_empresa';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const [userResult] = <span class="cstat-no" title="statement not covered" >await db.query(`SELECT * FROM ${queryTable} WHERE correo = ?`, [email]);</span>
+    try {
+        const [userResult] = await db.query(`SELECT * FROM ${queryTable} WHERE correo = ?`, [email]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (!userResult || userResult.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(404).json({ mensaje: 'Usuario no encontrado' });</span>
+        if (!userResult || userResult.length === 0) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
         }
 &nbsp;
-        const user = <span class="cstat-no" title="statement not covered" >userResult[0];  </span>
+        const user = userResult[0];  
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        console.log('Usuario encontrado:', user);</span>
+        console.log('Usuario encontrado:', user);
 &nbsp;
-        const match = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(password, user.contrasenia);</span>
-<span class="cstat-no" title="statement not covered" >        console.log('Resultado de comparación de contraseñas:', match);</span>
+        const match = await bcrypt.compare(password, user.contrasenia);
+        console.log('Resultado de comparación de contraseñas:', match);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (!match) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(401).json({ mensaje: 'Contraseña incorrecta' });</span>
+        if (!match) {
+            return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
         }
 &nbsp;
         // Genera el token incluyendo el ID del usuario
-        const token = <span class="cstat-no" title="statement not covered" >jwt.sign({ id: user[idColumn] }, 'secreto', { expiresIn: '1h' });</span>
+        const token = jwt.sign({ id: user[idColumn] }, 'secreto', { expiresIn: '1h' });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.json({ token, userId: user[idColumn], userType });</span>
+        res.json({ token, userId: user[idColumn], userType });
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        console.error('Error al iniciar sesión:', error);</span>
-<span class="cstat-no" title="statement not covered" >        res.status(500).json({ mensaje: 'Error en el servidor' });</span>
+        console.error('Error al iniciar sesión:', error);
+        res.status(500).json({ mensaje: 'Error en el servidor' });
     }
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -196,7 +196,7 @@ exports.iniciarSesion = <span class="fstat-no" title="function not covered" >as<
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-09T03:22:29.687Z
+                at 2025-04-09T03:44:56.963Z
             </div>
         <script src="prettify.js"></script>
         <script>
