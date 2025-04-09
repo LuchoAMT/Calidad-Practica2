@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744165626864" clover="3.2.0">
-  <project timestamp="1744165626864" name="All files">
-    <metrics statements="310" coveredstatements="37" conditionals="98" coveredconditionals="0" methods="26" coveredmethods="1" elements="434" coveredelements="38" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
+<coverage generated="1744167098889" clover="3.2.0">
+  <project timestamp="1744167098889" name="All files">
+    <metrics statements="310" coveredstatements="42" conditionals="98" coveredconditionals="0" methods="26" coveredmethods="2" elements="434" coveredelements="44" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
     <file name="authController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\authController.js">
       <metrics statements="23" coveredstatements="4" conditionals="14" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <line num="1" count="1" type="stmt"/>
@@ -29,7 +29,7 @@
       <line num="40" count="0" type="stmt"/>
     </file>
     <file name="carritosController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\carritosController.js">
-      <metrics statements="30" coveredstatements="10" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="30" coveredstatements="15" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="2" type="stmt"/>
@@ -38,11 +38,11 @@
       <line num="12" count="1" type="stmt"/>
       <line num="14" count="1" type="stmt"/>
       <line num="19" count="1" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="32" count="0" type="stmt"/>
+      <line num="20" count="2" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
       <line num="37" count="1" type="stmt"/>
       <line num="38" count="0" type="stmt"/>
       <line num="40" count="0" type="stmt"/>
