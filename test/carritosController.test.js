@@ -5,14 +5,6 @@ const db = require('../db.js'); // Ajusta según tu proyecto
 
 jest.mock('../db.js'); // Mockea la base de datos, osea no usa el modulo real de la base de datos, sino que lo simula 
 
-// Test vacío por ahora
-describe('carritosController', () => {
-  test('dummy test', () => {
-    expect(true).toBe(true);
-  });
-});
-
-
 
 describe('Funcion addToCart', () => {
   let req;
