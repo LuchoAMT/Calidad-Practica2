@@ -10,12 +10,7 @@ jest.mock('../db.js');
 jest.mock('bcrypt');
 jest.mock('jsonwebtoken');
 
-// Test vacío por ahora
-describe('userController', () => {
-  test('dummy test', () => {
-    expect(true).toBe(true);
-  });
-});
+
 
 describe('Funcion iniciarSesion', () => {
   let req;

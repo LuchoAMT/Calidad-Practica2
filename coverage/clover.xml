@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744170296994" clover="3.2.0">
-  <project timestamp="1744170296994" name="All files">
+<coverage generated="1744170383021" clover="3.2.0">
+  <project timestamp="1744170383021" name="All files">
     <metrics statements="310" coveredstatements="75" conditionals="98" coveredconditionals="18" methods="26" coveredmethods="5" elements="434" coveredelements="98" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
     <file name="authController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\authController.js">
       <metrics statements="23" coveredstatements="23" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
