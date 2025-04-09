@@ -114,7 +114,5 @@ describe('Funcion iniciarSesion', () => {
     expect(res.json).toHaveBeenCalledWith({ mensaje: 'Error en el servidor' });
   });
 
-
- 
 });
 

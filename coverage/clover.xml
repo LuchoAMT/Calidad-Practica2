@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744170383021" clover="3.2.0">
-  <project timestamp="1744170383021" name="All files">
-    <metrics statements="310" coveredstatements="75" conditionals="98" coveredconditionals="18" methods="26" coveredmethods="5" elements="434" coveredelements="98" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
+<coverage generated="1744171004910" clover="3.2.0">
+  <project timestamp="1744171004910" name="All files">
+    <metrics statements="310" coveredstatements="86" conditionals="98" coveredconditionals="20" methods="26" coveredmethods="6" elements="434" coveredelements="112" complexity="0" loc="310" ncloc="310" packages="1" files="6" classes="6"/>
     <file name="authController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\authController.js">
       <metrics statements="23" coveredstatements="23" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
@@ -62,21 +62,21 @@
       <line num="75" count="0" type="stmt"/>
     </file>
     <file name="empresasController.js" path="C:\NOVENO SEMESTRE\CALIDAD\PRACTICA 2 CALIDAD\Calidad-Practica2\controllers\empresasController.js">
-      <metrics statements="95" coveredstatements="7" conditionals="42" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <metrics statements="95" coveredstatements="18" conditionals="42" coveredconditionals="2" methods="6" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="18" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="24" count="0" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="8" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
       <line num="29" count="1" type="stmt"/>
       <line num="30" count="0" type="stmt"/>
       <line num="32" count="0" type="stmt"/>

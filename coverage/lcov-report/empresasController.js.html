@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.36% </span>
+                <span class="strong">18.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/95</span>
+                <span class='fraction'>18/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.76% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>2/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>1/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.36% </span>
+                <span class="strong">18.94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/95</span>
+                <span class='fraction'>18/95</span>
             </div>
         
             
@@ -241,25 +241,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -413,26 +413,26 @@
 const db = require('../db');  // Conexión a la base de datos
 &nbsp;
 // Crear una nueva empresa 
-exports.crearEmpresa = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { nombre, descripcion, correo, contrasenia, latitud, longitud, contacto } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const logo = <span class="cstat-no" title="statement not covered" >req.files['logo'] ? req.files['logo'][0].buffer : null;</span>
-    const QR_pago = <span class="cstat-no" title="statement not covered" >req.files['QR_pago'] ? req.files['QR_pago'][0].buffer : null;</span>
+exports.crearEmpresa = async (req, res) =&gt; {
+    const { nombre, descripcion, correo, contrasenia, latitud, longitud, contacto } = req.body;
+    const logo = req.files['logo'] ? req.files['logo'][0].buffer : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
+    const QR_pago = req.files['QR_pago'] ? req.files['QR_pago'][0].buffer : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
 &nbsp;
-    const saltRounds = <span class="cstat-no" title="statement not covered" >10;</span>
+    const saltRounds = 10;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
+    try {
         // Hasheamos la contraseña
-        const hashedPassword = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(contrasenia, saltRounds);</span>
+        const hashedPassword = await bcrypt.hash(contrasenia, saltRounds);
 &nbsp;
-        const query = <span class="cstat-no" title="statement not covered" >'INSERT INTO empresas (nombre, correo, contrasenia, descripcion, latitud, longitud, contacto, logo, QR_pago) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';</span>
+        const query = 'INSERT INTO empresas (nombre, correo, contrasenia, descripcion, latitud, longitud, contacto, logo, QR_pago) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        await db.query(query, [nombre, correo, hashedPassword, descripcion, latitud, longitud, contacto, logo, QR_pago]);</span>
+        await db.query(query, [nombre, correo, hashedPassword, descripcion, latitud, longitud, contacto, logo, QR_pago]);
 &nbsp;
         // Respuesta exitosa
-<span class="cstat-no" title="statement not covered" >        res.status(201).json({ mensaje: 'Empresa creada con éxito' });</span>
+        res.status(201).json({ mensaje: 'Empresa creada con éxito' });
     } catch (err) {
-<span class="cstat-no" title="statement not covered" >        console.error('Error al crear la empresa:', err);</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(500).json({ error: err.message });</span>
+        console.error('Error al crear la empresa:', err);
+        return res.status(500).json({ error: err.message });
     }
 }
 &nbsp;
@@ -589,7 +589,7 @@ exports.eliminarEmpresa = <span class="fstat-no" title="function not covered" >a
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-09T03:46:22.985Z
+                at 2025-04-09T03:56:44.877Z
             </div>
         <script src="prettify.js"></script>
         <script>
