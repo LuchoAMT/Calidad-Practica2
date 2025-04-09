@@ -180,6 +180,103 @@ describe('Funcion obtenerEmpresa', () => {
 });
 
 describe('Funcion obtenerEmpresaPorId', () => {
+  let req;
+  let res;
+
+  beforeEach(() => {
+    req = { params: {} };
+    res = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn()
+    };
+
+    jest.clearAllMocks();
+  });
+
+  it('Empresa encontrada con logo y QR_pago', async () => {
+    req.params.id_empresa = 1;
+  const mockEmpresa = {
+    id_empresa: 1,
+    nombre: 'Empresa1',
+    logo: Buffer.from('logo'),
+    QR_pago: Buffer.from('qr')
+  };
+
+  db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+  await empresasController.obtenerEmpresaPorId(req, res);
+
+  expect(res.json).toHaveBeenCalledWith({
+    id_empresa: 1,
+    nombre: 'Empresa1',
+    logo: `data:image/png;base64,${Buffer.from('logo').toString('base64')}`,
+    QR_pago: `data:image/png;base64,${Buffer.from('qr').toString('base64')}`
+  });
+  });
+
+  it('Empresa encontrada con logo pero sin QR_pago', async () => {
+    req.params.id_empresa = 2;
+    const mockEmpresa = {
+      id_empresa: 2,
+      nombre: 'Empresa2',
+      logo: Buffer.from('logo'),
+      QR_pago: null
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresaPorId(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      id_empresa: 2,
+      nombre: 'Empresa2',
+      logo: `data:image/png;base64,${Buffer.from('logo').toString('base64')}`,
+      QR_pago: null
+    });
+  });
+
+  it('Empresa encontrada con QR_pago pero sin logo', async () => {
+    req.params.id_empresa = 3;
+    const mockEmpresa = {
+      id_empresa: 3,
+      nombre: 'Empresa3',
+      logo: null,
+      QR_pago: Buffer.from('qr')
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresaPorId(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      id_empresa: 3,
+      nombre: 'Empresa3',
+      logo: null,
+      QR_pago: `data:image/png;base64,${Buffer.from('qr').toString('base64')}`
+    });
+  });
+
+  it('Empresa no encontrada', async () => {
+    req.params.id_empresa = 4;
+    db.query.mockResolvedValueOnce([[]]);
+
+    await empresasController.obtenerEmpresaPorId(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.send).toHaveBeenCalledWith('Empresa no encontrada.');
+  });
+
+  it('Error en la base de datos', async () => {
+    req.params.id_empresa = 5;
+    const error = new Error('DB error');
+    db.query.mockRejectedValueOnce(error);
+
+    await empresasController.obtenerEmpresaPorId(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.send).toHaveBeenCalledWith('Error al consultar la empresa.');
+  });
  
 });
 
