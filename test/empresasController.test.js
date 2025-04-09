@@ -8,6 +8,7 @@ jest.mock('../db.js');
 jest.mock('bcrypt');
 
 
+
 // Test vacío por ahora
 describe('empresasController', () => {
   test('dummy test', () => {
@@ -280,10 +281,6 @@ describe('Funcion obtenerEmpresaPorId', () => {
  
 });
 
-describe('Funcion actualizarEmpresa', () => {
- 
-});
-
 describe('Funcion eliminarEmpresa', () => {
   let req;
   let res;
@@ -321,3 +318,245 @@ describe('Funcion eliminarEmpresa', () => {
   });
  
 });
+
+
+describe('actualizarEmpresa', () => {
+  let req, res;
+
+  beforeEach(() => {
+    req = {
+      params: { id_empresa: '1' },
+      body: {},
+      files: {}
+    };
+
+    res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    };
+  });
+
+  it('debe retornar 404 si la empresa no existe', async () => {
+    db.query.mockResolvedValueOnce([[]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ mensaje: 'Empresa no encontrada' });
+  });
+
+  it('debe retornar 400 si no se proporcionan campos para actualizar', async () => {
+    db.query.mockResolvedValueOnce([[{ id_empresa: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ mensaje: 'No se proporcionaron campos para actualizar' });
+  });
+
+  it('debe actualizar correctamente con campos básicos', async () => {
+    req.body = {
+      nombre: 'Empresa X',
+      descripcion: 'Descripción de prueba',
+      correo: 'correo@empresa.com'
+    };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar la contraseña si se proporciona', async () => {
+    req.body = { contrasenia: 'nueva123' };
+
+    bcrypt.hash.mockResolvedValueOnce('hashed123');
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(bcrypt.hash).toHaveBeenCalledWith('nueva123', 10);
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe incluir logo y QR_pago si se envían', async () => {
+    req.body = { nombre: 'Empresa con archivos' };
+    req.files = {
+      logo: [{ buffer: Buffer.from('logo data') }],
+      QR_pago: [{ buffer: Buffer.from('qr data') }]
+    };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe manejar error inesperado en el try-catch', async () => {
+    db.query.mockRejectedValueOnce(new Error('Fallo de conexión'));
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Error al actualizar la empresa',
+      error: 'Fallo de conexión'
+    });
+  });
+
+  it('debe retornar 404 si no se afectó ninguna fila al actualizar', async () => {
+    req.body = { nombre: 'Otra Empresa' };
+  
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]]) // Empresa encontrada
+      .mockResolvedValueOnce([{ affectedRows: 0 }]); // Ninguna fila actualizada
+  
+    await empresasController.actualizarEmpresa(req, res);
+  
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ mensaje: 'No se pudo actualizar la empresa' });
+  });
+  
+
+  it('debe actualizar solo el campo nombre', async () => {
+    req.body = { nombre: 'SoloNombre' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo descripcion', async () => {
+    req.body = { descripcion: 'Descripción nueva' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo correo', async () => {
+    req.body = { correo: 'nuevo@correo.com' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo latitud', async () => {
+    req.body = { latitud: '45.123' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo longitud', async () => {
+    req.body = { longitud: '67.987' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo contacto', async () => {
+    req.body = { contacto: '77777777' };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo logo', async () => {
+    req.files = {
+      logo: [{ buffer: Buffer.from('logodata') }]
+    };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+
+  it('debe actualizar solo el campo QR_pago', async () => {
+    req.files = {
+      QR_pago: [{ buffer: Buffer.from('qrdata') }]
+    };
+
+    db.query
+      .mockResolvedValueOnce([[{ id_empresa: 1 }]])
+      .mockResolvedValueOnce([[{ affectedRows: 1 }]]);
+
+    await empresasController.actualizarEmpresa(req, res);
+
+    expect(res.json).toHaveBeenCalledWith({
+      mensaje: 'Empresa actualizada exitosamente',
+      empresaId: '1'
+    });
+  });
+});
+
