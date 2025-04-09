@@ -73,6 +73,109 @@ describe('Funcion crearEmpresa', () => {
 });
 
 describe('Funcion obtenerEmpresa', () => {
+  let req;
+  let res;
+
+  beforeEach(() => {
+    req = {};
+    res = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    };
+
+    jest.clearAllMocks();
+  });
+
+  it('Empresa con logo y QR_pago', async () => {
+    const mockEmpresa = {
+      id_empresa: 1,
+      nombre: 'Empresa1',
+      logo: Buffer.from('logo'),
+      QR_pago: Buffer.from('qr')
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresas(req, res);
+
+    expect(res.json).toHaveBeenCalledWith([
+      {
+        id_empresa: 1,
+        nombre: 'Empresa1',
+        logo: `data:image/png;base64,${Buffer.from('logo').toString('base64')}`,
+        QR_pago: `data:image/png;base64,${Buffer.from('qr').toString('base64')}`
+      }
+    ]);
+  });
+
+  it('Empresa sin logo ni QR_pago', async () => {
+    const mockEmpresa = {
+      id_empresa: 2,
+      nombre: 'Empresa2',
+      logo: null,
+      QR_pago: null
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresas(req, res);
+
+    expect(res.json).toHaveBeenCalledWith([mockEmpresa]);
+  });
+
+  it('Empresa con logo pero sin QR_pago', async () => {
+    const mockEmpresa = {
+      id_empresa: 3,
+      nombre: 'Empresa3',
+      logo: Buffer.from('logo'),
+      QR_pago: null
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresas(req, res);
+
+    expect(res.json).toHaveBeenCalledWith([
+      {
+        id_empresa: 3,
+        nombre: 'Empresa3',
+        logo: `data:image/png;base64,${Buffer.from('logo').toString('base64')}`,
+        QR_pago: null
+      }
+    ]);
+  });
+
+  it('Empresa sin logo pero con QR_pago', async () => {
+    const mockEmpresa = {
+      id_empresa: 4,
+      nombre: 'Empresa4',
+      logo: null,
+      QR_pago: Buffer.from('qr')
+    };
+
+    db.query.mockResolvedValueOnce([[mockEmpresa]]);
+
+    await empresasController.obtenerEmpresas(req, res);
+
+    expect(res.json).toHaveBeenCalledWith([
+      {
+        id_empresa: 4,
+        nombre: 'Empresa4',
+        logo: null,
+        QR_pago: `data:image/png;base64,${Buffer.from('qr').toString('base64')}`
+      }
+    ]);
+  });
+
+  it('Error en la base de datos', async () => {
+    const error = new Error('DB error');
+    db.query.mockRejectedValueOnce(error);
+
+    await empresasController.obtenerEmpresas(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'DB error' });
+  });
  
 });
 

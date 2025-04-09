@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.94% </span>
+                <span class="strong">30.52% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/95</span>
+                <span class='fraction'>29/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.76% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/42</span>
+                <span class='fraction'>6/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.94% </span>
+                <span class="strong">30.52% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/95</span>
+                <span class='fraction'>29/95</span>
             </div>
         
             
@@ -265,24 +265,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -437,25 +437,25 @@ exports.crearEmpresa = async (req, res) =&gt; {
 }
 &nbsp;
 // Obtener todas las empresas
-exports.obtenerEmpresas = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const query = <span class="cstat-no" title="statement not covered" >'SELECT * FROM empresas';</span>
+exports.obtenerEmpresas = async (req, res) =&gt; {
+    const query = 'SELECT * FROM empresas';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const [results] = <span class="cstat-no" title="statement not covered" >await db.query(query);</span>
+    try {
+        const [results] = await db.query(query);
 &nbsp;
-        const empresas = <span class="cstat-no" title="statement not covered" >results.map(<span class="fstat-no" title="function not covered" >em</span>presa =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            if (empresa.logo) {</span>
-<span class="cstat-no" title="statement not covered" >                empresa.logo = `data:image/png;base64,${empresa.logo.toString('base64')}`;</span>
+        const empresas = results.map(empresa =&gt; {
+            if (empresa.logo) {
+                empresa.logo = `data:image/png;base64,${empresa.logo.toString('base64')}`;
             }
-<span class="cstat-no" title="statement not covered" >            if (empresa.QR_pago) {</span>
-<span class="cstat-no" title="statement not covered" >                empresa.QR_pago = `data:image/png;base64,${empresa.QR_pago.toString('base64')}`;</span>
+            if (empresa.QR_pago) {
+                empresa.QR_pago = `data:image/png;base64,${empresa.QR_pago.toString('base64')}`;
             }
-<span class="cstat-no" title="statement not covered" >            return empresa;</span>
+            return empresa;
         });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.json(empresas);</span>
+        res.json(empresas);
     } catch (err) {
-<span class="cstat-no" title="statement not covered" >        return res.status(500).json({ error: err.message });</span>
+        return res.status(500).json({ error: err.message });
     }
 };
 &nbsp;
@@ -589,7 +589,7 @@ exports.eliminarEmpresa = <span class="fstat-no" title="function not covered" >a
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-09T03:56:44.877Z
+                at 2025-04-09T04:09:04.599Z
             </div>
         <script src="prettify.js"></script>
         <script>
