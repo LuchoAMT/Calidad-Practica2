@@ -133,5 +133,137 @@ describe('Funcion obtenerCarritoPorId',()=>{
 });
 
 
+describe('Funcion vaciarCarrito',()=>{
+  let req;
+  let res;
+
+  beforeEach(() => {
+    req = {
+      body: {
+        id_usuario: 1,
+      },
+    };
+
+    res = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    };
+
+    jest.clearAllMocks();
+  });
+
+  it('Carrito vaciado correctamente', async () => {
+    // Arrange
+    db.query.mockResolvedValueOnce();
+
+    // Act
+    await carritosController.vaciarCarrito(req, res);
+
+    // Assert
+    expect(db.query).toHaveBeenCalledWith(
+      'UPDATE carritos SET estado = "inactivo" WHERE id_negocio = ?',
+      [1]
+    );
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith({ message: 'Carrito vaciado.' });
+  });
+
+  it('Falla al vaciar el carrito', async () => {
+    // Arrange
+    const errorMock = new Error('Error al actualizar la base de datos');
+    db.query.mockRejectedValueOnce(errorMock);
+
+    // Act
+    await carritosController.vaciarCarrito(req, res);
+
+    // Assert
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.send).toHaveBeenCalledWith(errorMock);
+  });
 
 
+});
+
+
+describe('Funcion actualizarCantidadProducto',()=>{
+
+  let req;
+  let res;
+
+  beforeEach(() => {
+    req = {
+      body: {
+        id_usuario: 1,
+        id_producto: 10,
+        cantidad: 2, // se puede sobreescribir por prueba
+      },
+    };
+
+    res = {
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn(),
+    };
+
+    jest.clearAllMocks();
+  });
+
+
+  it('Actualiza cantidad correctamente (cantidad > 0 y afecta filas)', async () => {
+    db.query.mockResolvedValueOnce([{ affectedRows: 1 }]);
+
+    await carritosController.actualizarCantidadProducto(req, res);
+
+    expect(db.query).toHaveBeenCalledWith(
+      'UPDATE carritos SET cantidad = ? WHERE id_negocio = ? AND id_producto = ? AND estado = "activo"',
+      [2, 1, 10]
+    );
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith({ message: 'Cantidad actualizada.' });
+  });
+
+  it('No encuentra producto al actualizar cantidad (cantidad > 0 y no afecta filas)', async () => {
+    db.query.mockResolvedValueOnce([{ affectedRows: 0 }]);
+
+    await carritosController.actualizarCantidadProducto(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.send).toHaveBeenCalledWith({ message: 'Producto no encontrado en el carrito.' });
+  });
+
+  it(' Marca producto como inactivo (cantidad <= 0 y afecta filas)', async () => {
+    req.body.cantidad = 0;
+    db.query.mockResolvedValueOnce([{ affectedRows: 1 }]);
+
+    await carritosController.actualizarCantidadProducto(req, res);
+
+    expect(db.query).toHaveBeenCalledWith(
+      'UPDATE carritos SET estado = ? WHERE id_negocio = ? AND id_producto = ? AND estado = "activo"',
+      ['inactivo', 1, 10]
+    );
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith({ message: 'Cantidad actualizada.' });
+  });
+
+  it('Producto no encontrado al intentar marcar como inactivo (cantidad <= 0 y no afecta filas)', async () => {
+    req.body.cantidad = 0;
+    db.query.mockResolvedValueOnce([{ affectedRows: 0 }]);
+
+    await carritosController.actualizarCantidadProducto(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.send).toHaveBeenCalledWith({ message: 'Producto no encontrado en el carrito.' });
+  });
+
+  // it('Error en la base de datos', async () => {
+  //   const errorMock = new Error('Falla en DB');
+  //   db.query.mockRejectedValueOnce(errorMock);
+
+  //   await carritosController.actualizarCantidadProducto(req, res);
+
+  //   expect(res.status).toHaveBeenCalledWith(500);
+  //   expect(res.send).toHaveBeenCalledWith(errorMock);
+  // });
+
+
+
+});

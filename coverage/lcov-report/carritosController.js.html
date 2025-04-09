@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">96.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/30</span>
+                <span class='fraction'>29/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">96.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/30</span>
+                <span class='fraction'>29/30</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -177,42 +177,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,43 +253,43 @@ exports.obtenerCarritoPorId = async (req, res) =&gt; {
 };
 &nbsp;
 // Vaciar carrito
-exports.vaciarCarrito = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { id_usuario } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+exports.vaciarCarrito = async (req, res) =&gt; {
+    const { id_usuario } = req.body;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >        await db.query(</span>
+    try {
+        await db.query(
             'UPDATE carritos SET estado = "inactivo" WHERE id_negocio = ?',
             [id_usuario]
         );
-<span class="cstat-no" title="statement not covered" >        res.status(200).send({ message: 'Carrito vaciado.' });</span>
+        res.status(200).send({ message: 'Carrito vaciado.' });
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >        res.status(500).send(error);</span>
+        res.status(500).send(error);
     }
 };
 &nbsp;
 // Actualizar cantidad de un producto en el carrito
-exports.actualizarCantidadProducto = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-    const { id_usuario, id_producto, cantidad } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+exports.actualizarCantidadProducto = async (req, res) =&gt; {
+    const { id_usuario, id_producto, cantidad } = req.body;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        let [result] = <span class="cstat-no" title="statement not covered" >'';</span>
-<span class="cstat-no" title="statement not covered" >        if (cantidad &lt;= 0){</span>
-<span class="cstat-no" title="statement not covered" >            [result] = await db.query(</span>
+    try {
+        let [result] = '';
+        if (cantidad &lt;= 0){
+            [result] = await db.query(
                 'UPDATE carritos SET estado = ? WHERE id_negocio = ? AND id_producto = ? AND estado = "activo"',
                 ["inactivo", id_usuario, id_producto]
             );
         } else {
-<span class="cstat-no" title="statement not covered" >            [result] = await db.query(</span>
+            [result] = await db.query(
                 'UPDATE carritos SET cantidad = ? WHERE id_negocio = ? AND id_producto = ? AND estado = "activo"',
                 [cantidad, id_usuario, id_producto]
             );
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (result.affectedRows === 0) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(404).send({ message: 'Producto no encontrado en el carrito.' });</span>
+        if (result.affectedRows === 0) {
+            return res.status(404).send({ message: 'Producto no encontrado en el carrito.' });
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.status(200).send({ message: 'Cantidad actualizada.' });</span>
+        res.status(200).send({ message: 'Cantidad actualizada.' });
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).send(error);</span>
     }
@@ -301,7 +301,7 @@ exports.actualizarCantidadProducto = <span class="fstat-no" title="function not 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-09T02:51:38.857Z
+                at 2025-04-09T03:22:29.687Z
             </div>
         <script src="prettify.js"></script>
         <script>
