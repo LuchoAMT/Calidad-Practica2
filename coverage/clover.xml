@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744519253812" clover="3.2.0">
-  <project timestamp="1744519253812" name="All files">
-    <metrics statements="314" coveredstatements="313" conditionals="98" coveredconditionals="95" methods="26" coveredmethods="26" elements="438" coveredelements="434" complexity="0" loc="314" ncloc="314" packages="2" files="7" classes="7"/>
+<coverage generated="1744521233914" clover="3.2.0">
+  <project timestamp="1744521233914" name="All files">
+    <metrics statements="314" coveredstatements="314" conditionals="98" coveredconditionals="95" methods="26" coveredmethods="26" elements="438" coveredelements="435" complexity="0" loc="314" ncloc="314" packages="2" files="7" classes="7"/>
     <package name="API">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="db.js" path="D:\Luis Antonio\1-2025\Gestion de calidad\Practica 2\API\db.js">
@@ -13,7 +13,7 @@
       </file>
     </package>
     <package name="API.controllers">
-      <metrics statements="310" coveredstatements="309" conditionals="98" coveredconditionals="95" methods="26" coveredmethods="26"/>
+      <metrics statements="310" coveredstatements="310" conditionals="98" coveredconditionals="95" methods="26" coveredmethods="26"/>
       <file name="authController.js" path="D:\Luis Antonio\1-2025\Gestion de calidad\Practica 2\API\controllers\authController.js">
         <metrics statements="23" coveredstatements="23" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -41,7 +41,7 @@
         <line num="40" count="2" type="stmt"/>
       </file>
       <file name="carritosController.js" path="D:\Luis Antonio\1-2025\Gestion de calidad\Practica 2\API\controllers\carritosController.js">
-        <metrics statements="30" coveredstatements="29" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <metrics statements="30" coveredstatements="30" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
@@ -62,16 +62,16 @@
         <line num="45" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
-        <line num="53" count="4" type="stmt"/>
-        <line num="55" count="4" type="stmt"/>
-        <line num="56" count="4" type="stmt"/>
-        <line num="57" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="5" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="56" count="5" type="stmt"/>
+        <line num="57" count="5" type="cond" truecount="2" falsecount="0"/>
         <line num="58" count="2" type="stmt"/>
-        <line num="63" count="2" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
         <line num="69" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="70" count="2" type="stmt"/>
         <line num="73" count="2" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
       </file>
       <file name="empresasController.js" path="D:\Luis Antonio\1-2025\Gestion de calidad\Practica 2\API\controllers\empresasController.js">
         <metrics statements="95" coveredstatements="95" conditionals="42" coveredconditionals="40" methods="6" coveredmethods="6"/>

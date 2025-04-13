@@ -246,15 +246,15 @@ describe('Funcion actualizarCantidadProducto',()=>{
     expect(res.send).toHaveBeenCalledWith({ message: 'Producto no encontrado en el carrito.' });
   });
 
-  // it('Error en la base de datos', async () => {
-  //   const errorMock = new Error('Falla en DB');
-  //   db.query.mockRejectedValueOnce(errorMock);
+  it('Error en la base de datos', async () => {
+    const errorMock = new Error('Falla en DB');
+    db.query.mockRejectedValueOnce(errorMock);
 
-  //   await carritosController.actualizarCantidadProducto(req, res);
+    await carritosController.actualizarCantidadProducto(req, res);
 
-  //   expect(res.status).toHaveBeenCalledWith(500);
-  //   expect(res.send).toHaveBeenCalledWith(errorMock);
-  // });
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.send).toHaveBeenCalledWith(errorMock);
+  });
 
 
 
