@@ -60,8 +60,6 @@ LEFT JOIN
     productos pr ON pp.id_producto = pr.id_producto
 WHERE
     p.id_negocio = ?;
-
-
   `;
 
   try {
@@ -88,7 +86,6 @@ WHERE
           });
           return acc;
       }, []);
-
       res.status(200).json(pedidos);
   } catch (err) {
       console.error('Error al obtener los pedidos:', err);
